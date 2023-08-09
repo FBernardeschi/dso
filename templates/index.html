@@ -1,0 +1,42 @@
+{% include 'base.html' %}
+
+{% include 'header.html' %}
+
+{% block content %}
+
+<section class="main">
+    <div class="wrapper">
+        <div class="title">
+            <h1>Аккаунты</h1>
+        </div>
+        <div class="sorted">
+            <select class="sort">
+                {% for i in select_desc %}
+                <option value="{{ i[0] }}" {{ (desc == i[0]) ? 'selected' : '' }}>{{ i[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="block-content">
+            <div class="line"></div>
+
+            <div class="title-account">
+                {% for i in title_account %}
+                <a data-sorted="{{ i[0] }}" {{ (i[0] == column) ? 'class="now"' : "" }} href="index.php">{{ i[1] }}</a>
+                {% endfor %}
+            </div>
+            {% for i in accounts %}
+            <a href="account.php?id={{ i['id'] }}" class="block-account">
+                <div class="region">{{ i['region'] }} <img src="img/country/{{ i['region']}}.png" alt=""></div>
+                <div>{{ i['id_pers'] }}</div>
+                <div>{{ i['class'] }}</div>
+                <div>{{ i['level_acc'] }}</div>
+                <div>{{ i['price'] }}</div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script src="js/sort.js"></script>
+
+{% endblock %}

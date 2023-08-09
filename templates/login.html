@@ -1,0 +1,29 @@
+{% include 'base.html' %}
+
+<section class="login">
+    <form action="login.php" method="POST">
+        <div class="block-login">
+
+            <!-- <div class="login-title">Login</div> -->
+
+            <div class="block-input">
+                <label for="login_input">Логин</label>
+                <input name="login" type="text" id="login_input" required>
+            </div>
+
+            <div class="block-input">
+                <label for="password_input">Пароль</label>
+                <input name="pass" type="password" id="password_input" required>
+            </div>
+
+            <input type="submit" class="btn-black" value="Войти">
+
+            {% if error %}
+            <p class="error__red">{{ error }}</p>
+            {% endif %}
+
+        </div>
+    </form>
+</section>
+
+<script src="js/app.js"></script>

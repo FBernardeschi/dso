@@ -1,0 +1,16 @@
+<header>
+    <div class="wrapper">
+        <div class="logo">
+            <a href="index.php">LOGO</a>
+        </div>
+
+        <div class="navbar">
+            {% if auth %}
+            <a href="admin.php" class="login">Админка</a>
+            <a href="logout.php" class="login">Выйти</a>
+            {% else %}
+            <a href="login.php" class="login">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

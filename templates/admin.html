@@ -1,0 +1,79 @@
+{% include 'base.html' %}
+
+{% include 'header.html' %}
+
+{% block content %}
+
+<section class="admin">
+    <div class="wrapper">
+        <div class="add">
+            <form action="" method="POST">
+                <div class="title"><h1>Добавить аккаунт</h1></div>
+                <div class="block-account">
+                    <div class="box-input">
+                        <input type="text" name="id_pers" required>
+                        <label>Ид персонажа</label>
+                    </div>
+                    <div class="box-input">
+                        <input type="text" name="level" required>
+                        <label>Уровень</label>
+                    </div>
+                    <div class="box-input">
+                        <input type="text" name="price" required>
+                        <label>Цена</label>
+                    </div>
+                    <div class="box-input hidden">
+                        <select name="class" class="region">
+                            <option value="" selected>Выберите класс</option>
+                            {% for i in class %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="box-input hidden">
+                        <select name="region" class="region">
+                            <option value="" selected>Выберите регион</option>
+                            {% for i in country %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="box-input">
+                        <input type="text" name="photo" required>
+                        <label>Фото (через запятую)</label>
+                    </div>
+                </div>
+                <input type="submit" class="btn-black" name="add" value="Добавить">
+            </form>
+        </div>
+
+        <div class="list-adm">
+            <div class="list-adm-title">
+                <div>Регион</div>
+                <div class="nick">Ник</div>
+                <div>Класс</div>
+                <div>Уровень</div>
+                <div>Цена</div>
+            </div>
+            {% for i in acc %}
+            <div class="list-adm-account">
+                <div>{{ i['region'] }}</div>
+                <div class="nick">{{ i['id_pers'] }}</div>
+                <div>{{ i['class'] }}</div>
+                <div>{{ i['level_acc'] }}</div>
+                <div>{{ i['price'] }}</div>
+                <div>
+                    <a href="admin.php?delete={{ i['id'] }}">Удалить</a>
+                </div>    
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="block-btn">
+            <a href="index.php" class="btn-black">Главная</a>
+        </div>   
+
+    </div>
+</section>
+
+{% endblock %}

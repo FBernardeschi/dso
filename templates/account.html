@@ -1,0 +1,49 @@
+{% include 'base.html' %}
+
+{% include 'header.html' %}
+
+{% block content %}
+
+<section class="account">
+    <div class="wrapper">
+        <div class="title">
+            <h1>Аккаунт</h1>
+        </div>
+        
+        <div class="block-content">
+            <div class="line"></div>
+
+            <div class="title-account">
+                <div>Регион</div>
+                <div>Ид персонажа</div>
+                <div>Класс</div>
+                <div>Уровень</div>
+                <div>Цена</div>
+            </div>
+            
+            <div class="block-account">
+                <div class="region">{{ account['region'] }} <img src="img/country/{{ account['region']}}.png" alt=""></div>
+                <div>{{ account['id_pers'] }}</div>
+                <div>{{ account['class'] }}</div>
+                <div>{{ account['level_acc'] }}</div>
+                <div>{{ account['price'] }}</div>
+            </div>
+
+            <div class="block-photo">
+                {% for i in photo %}
+                <div class="fon-photo" style="--iter:{{ loop.index }}">
+                    <img src="{{ i }}" alt="PHOTO">
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+
+        <div class="block-btn">
+            <a href="index.php" class="btn-black">Назад</a>
+        </div>    
+
+    </div>
+</section>
+
+{% endblock %}
